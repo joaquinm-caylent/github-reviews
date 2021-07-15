@@ -53,13 +53,14 @@ func main() {
 			reviews,_,err := client.PullRequests.ListReviews(ctx, repoOwner,repoName, *pr.Number,nil)
 			for _, review := range reviews {
 				if github.Stringify(review.State) == "\"APPROVED\"" {
-					fmt.Println(github.Stringify(review.User.Login))
+					fmt.Print(github.Stringify(review.User.Login), " ")
 				}
 			}
 			if err != nil {
 				fmt.Printf("\nerror: %v\n", err)
 				return
 			}
+			fmt.Println()
 			fmt.Println("--------------------------------------------------------------------------------")
 		}
 		if err != nil {
