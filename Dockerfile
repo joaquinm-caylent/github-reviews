@@ -4,6 +4,6 @@ COPY . .
 RUN go mod tidy
 RUN go build
 
-FROM scratch
-COPY --from=build /src/github-reviewsp /src/github-reviews
+FROM alpine:3.14
+COPY --from=build /src/github-reviews /src/github-reviews
 CMD ["/src/github-reviews"]
